@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+   <title>新冠疫情舆情时空分析</title> 
+  
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+    <!-- Top Bar  -->
+    <header class="top-bar">
+
+        <!-- Menu Toggler -->
+        <button type="button" class="menu-toggler la la-bars" data-toggle="menu"></button>
+
+        <!-- Brand -->
+        <span class="brand">新冠疫情舆情时空分析</span>
+
+        <!-- Search -->
+        <form class="hidden md:block ml-10" action="#">
+            <label class="form-control-addon-within rounded-full">
+                <input type="text" id="mytext" class="form-control border-none" placeholder="Search" value="">
+                <span class="flex items-center pr-4">
+                    <button type="button" id="mybtn"
+                        class="dark:text-gray-700 dark:hover:text-primary btn btn-link text-gray-300 hover:text-primary text-xl leading-none la la-search"></button>
+                </span>
+            </label>
+        </form>
+
+        <!-- Right -->
+        <div class="flex items-center ml-auto">
+
+            <!-- Dark Mode -->
+            <label class="switch switch_outlined" data-toggle="tooltip" data-tippy-content="Toggle Dark Mode">
+                <input id="darkModeToggler" type="checkbox">
+                <span></span>
+            </label>
+
+            <!-- Fullscreen -->
+            <button type="button"
+                class="hidden lg:inline-block btn-link ml-3 px-2 text-2xl leading-none la la-expand-arrows-alt"
+                data-toggle="tooltip" data-tippy-content="Fullscreen" id="fullScreenToggler"></button>
+
+        </div>
+    </header>
+    
+    <!-- Menu Bar -->
+    <aside class="menu-bar">
+        <div class="menu menu-sticky">
+            <div class="menu-items">
+                <a href="#no-link" data-target="dataoverview" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-laptop"></span><span class="title">数据总览</span></a>
+                <a href="#no-link" data-target="datasearch" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-layer-group"></span><span class="title">信息查询</span></a>
+                <a href="#no-link" data-target="dataanalyst" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-sitemap"></span><span class="title">数据分析</span></a>
+                <a href="#no-link" data-target="message" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-comment"></span><span class="title">舆情挖掘</span></a>
+            </div>
+
+            <!-- DataOverview -->
+            <div class="menu-detail" data-menu="dataoverview">
+                <a href="index.html"><span class="la la-chart-area"></span>Dashboard</a>
+                <a href="mainmap.html"><span class="la la-map"></span>Map 2D/3D</a>
+            </div>
+
+            <!-- DataSearch -->
+            <div class="menu-detail" data-menu="datasearch">
+                <a href="query-map.html"><span class="la la-map"></span>Map Polygon/Attribute Query</a>
+                <a href="detail-query.html"><span class="la la-thumbtack"></span>Information Query</a>
+            </div>
+
+            <!-- DataAnalyst -->
+            <div class="menu-detail" data-menu="dataanalyst">
+                <a href="heat-map.html"><span class="la la-table"></span>Heat Density Map</a>
+                <a href="migrate-map.html"><span class="la la-map"></span>Migration Map</a>
+            </div>
+
+            <!-- Message -->
+            <div class="menu-detail" data-menu="message">
+                <a href="blog-list-card-columns.html"><span class="la la-list"></span>Up-to-date Messages</a>
+                <a href="blog-list.html"><span class="la la-hand-pointer"></span>Sentiment Analyst</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Workspace  -->
+    <main class="workspace overflow-hidden">
+
+        <!-- Breadcrumb -->
+        <section class="breadcrumb lg:flex items-start">
+            <div>
+                <h1>最新数据显示</h1>
+                <ul>
+                    <li><a>舆情显示</a></li>
+                    <li class="divider la la-arrow-right"></li>
+                    <li>情感判断</li>
+                </ul>
+            </div>
+
+            <div class="lg:flex items-center ml-auto mt-5 lg:mt-0">
+                <div class="mt-5 lg:mt-0">
+                    <a href="#" class="btn btn-icon btn-icon_large btn_outlined btn_primary"><span
+                            class="la la-bars"></span></a>
+                    <a href="blog-list-card-columns.html"
+                        class="btn btn-icon btn-icon_large btn_outlined btn_secondary ml-2"><span
+                            class="la la-th-large"></span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- List -->
+        <div class="card p-5">
+            <div class="overflow-x-auto">
+                <table class="table table-auto table_hoverable w-full">
+                    <thead>
+                        <tr>
+                            <th class="text-left uppercase">Title</th>
+                            <th class="text-center uppercase">Time</th>
+                            <th class="text-center uppercase">Attitude</th>
+                            <th class="uppercase"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="title1">-</td>
+                            <td class="text-center" id="time1">-</td>
+                            <td class="text-center">
+                                <div class="badge badge_outlined badge_success uppercase" id="news1">NULL</div>
+                            </td>
+                            <td class="text-right whitespace-no-wrap">
+                                <div class="inline-flex ml-auto">
+                                    <button class="badge badge_outlined badge_secondary uppercase" onclick="adp(1)"><span
+                                        >积极</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase  ml-2" onclick="adne(1)"><span
+                                        >中性</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase ml-2" onclick="adna(1)"><span
+                                        >消极</span></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="title2">-</td>
+                            <td class="text-center" id="time2">-</td>
+                            <td class="text-center">
+                                <div class="badge badge_outlined badge_success uppercase" id="news2">NULL</div>
+                            </td>
+                            <td class="text-right whitespace-no-wrap">
+                                <div class="inline-flex ml-auto">
+                                    <button class="badge badge_outlined badge_secondary uppercase" onclick="adp(2)"><span
+                                        >积极</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase  ml-2" onclick="adne(2)"><span
+                                        >中性</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase ml-2" onclick="adna(2)"><span
+                                        >消极</span></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="title3">-</td>
+                            <td class="text-center" id="time3">-</td>
+                            <td class="text-center">
+                                <div class="badge badge_outlined badge_success uppercase" id="news3">NULL</div>
+                            </td>
+                            <td class="text-right whitespace-no-wrap">
+                                <div class="inline-flex ml-auto">
+                                    <button class="badge badge_outlined badge_secondary uppercase" onclick="adp(3)"><span
+                                        >积极</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase  ml-2" onclick="adne(3)"><span
+                                        >中性</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase ml-2" onclick="adna(3)"><span
+                                        >消极</span></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="title4">-</td>
+                            <td class="text-center" id="time4">-</td>
+                            <td class="text-center">
+                                <div class="badge badge_outlined badge_success uppercase" id="news4">NULL</div>
+                            </td>
+                            <td class="text-right whitespace-no-wrap">
+                                <div class="inline-flex ml-auto">
+                                    <button class="badge badge_outlined badge_secondary uppercase" onclick="adp(4)"><span
+                                        >积极</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase  ml-2" onclick="adne(4)"><span
+                                        >中性</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase ml-2" onclick="adna(4)"><span
+                                        >消极</span></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="title5">-</td>
+                            <td class="text-center" id="time5">-</td>
+                            <td class="text-center">
+                                <div class="badge badge_outlined badge_success uppercase" id="news5">NULL</div>
+                            </td>
+                            <td class="text-right whitespace-no-wrap">
+                                <div class="inline-flex ml-auto">
+                                    <button class="badge badge_outlined badge_secondary uppercase" onclick="adp(5)"><span
+                                        >积极</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase  ml-2" onclick="adne(5)"><span
+                                        >中性</span></button>
+                                    <button class="badge badge_outlined badge_secondary uppercase ml-2" onclick="adna(5)"><span
+                                        >消极</span></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="card lg:flex mt-5">
+            <nav class="flex flex-wrap p-5">
+                <a href="blog-list.html" class="btn mr-2 mb-2 lg:mb-0 btn_secondary">First</a>
+                <a href="blog-list.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">1</a>
+                <a href="blog-list2.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">2</a>
+                <a href="blog-list3.html" class="btn mr-2 mb-2 lg:mb-0 btn_primary">3</a>
+                <a href="blog-list4.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">4</a>
+                <a href="blog-list5.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">5</a>
+                <a href="blog-list5.html" class="btn mr-2 mb-2 lg:mb-0 btn_secondary">Last</a>
+            </nav>
+            <div class="flex items-center ml-auto p-5 border-t lg:border-t-0 border-gray-200 dark:border-gray-900">
+                Displaying 1-5 of 25 items
+            </div>
+        </div>
+
+        <!-- Footer Bar -->
+        <div class="footer-bar">
+            <div class="ml-auto">
+                <button id="save" class="btn btn_danger uppercase"><span
+                        class="la la-pen-fancy text-xl leading-none mr-2"></span>确认提交情感判断</button>
+            </div>
+        </div>
+
+        <!-- Footer  -->
+        <footer class="flex mt-auto">
+            <div class="footer">
+                <span class='uppercase'>&copy; 2020 Yeti</span>
+                <nav class="ml-auto">
+                    <a href="">Support</a>
+                    <span class="divider mx-2">|</span>
+                    <a href="http://www.bootstrapmb.com">Docs</a>
+                </nav>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        function adp(p)//改变第一条信息情感为正向
+        {
+            var idname="news"+p;
+            document.getElementById(idname).innerText="积极";
+        }
+        function adne(p)//改变第一条信息情感为正向
+        {
+            var idname="news"+p;
+            document.getElementById(idname).innerText="中性";
+        }
+        function adna(p)//改变第一条信息情感为正向
+        {
+            var idname="news"+p;
+            document.getElementById(idname).innerText="消极";
+        }
+    </script>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script> 
+<script>    
+    $(function(){    
+        $.ajax({    
+            //请求方式    
+            type:"GET",    
+            //文件位置    
+            url:"json/news_25.json",  
+            //返回数据格式为json,也可以是其他格式如    
+            dataType: "json",    
+            //请求成功后要执行的函数，拼接html    
+            success: function(data){    
+                var title;
+                var time; 
+                var i;
+                var a;
+                var p = 2;
+                for(i=0; i<5; i++){
+                    title = data[p*5+i].message; 
+                    a = i + 1;
+                    str = "title" + a;
+                    document.getElementById(str).innerText = title;
+                    time = data[p*5 + i].time_t;  
+                    str = "time" + a;
+                    document.getElementById(str).innerText = time;
+                }
+            } 
+        });    
+    });    
+</script>  
+<script src="assets/js/page-link.js"></script>
+<script>
+    function fake_click(obj) {
+        var ev = document.createEvent("MouseEvents");
+        ev.initMouseEvent(
+            "click", true, false, window, 0, 0, 0, 0, 0
+            , false, false, false, false, 0, null
+        );
+        obj.dispatchEvent(ev);
+    }
+    //name-文件名；data-要保存的字符串。
+    function export_raw(name, data) {
+        var urlObject = window.URL || window.webkitURL || window;
+        var export_blob = new Blob([data]);
+        var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+        save_link.href = urlObject.createObjectURL(export_blob);
+        save_link.download = name;
+        fake_click(save_link);
+    }
+    window.onload = function() {
+        document.getElementById('save').onclick = function() {
+            //option为对象要先转成字符串
+            var data=[{"id":810,"message":"地方新闻精选 | 浙江53万人接种新冠疫苗无严重不良反应 石家庄一村书记牺牲在抗疫一线","time_t":"19:05:00","emotion":""},{"id":811,"message":"鹤壁市山城区首批新冠病毒疫苗已开始接种（图）","time_t":"19:02:00","emotion":""},{"id":812,"message":"海南：疫情防控不松劲 着力提升新冠病毒核酸检测能力","time_t":"19:01:00","emotion":""},{"id":813,"message":"1月15日疫情速递 | 石家庄多名中小学生确诊，9地升为中风险地区；中疾控专家：鼻炎严重发作期不要接种新冠疫苗","time_t":"19:01:00","emotion":""},{"id":814,"message":"欧洲央行警言新冠疫情对银行业的影响尚未全面显现","time_t":"18:58:00","emotion":""}];
+
+            data[0].emotion=document.getElementById("news1").innerText;
+            data[1].emotion=document.getElementById("news2").innerText;
+            data[2].emotion=document.getElementById("news3").innerText;
+            data[3].emotion=document.getElementById("news4").innerText;
+            data[4].emotion=document.getElementById("news5").innerText;
+            var mydata = JSON.stringify(data);
+            export_raw('news_25.json',mydata);
+        }
+    }
+</script>
+</body>
+</html>

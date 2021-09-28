@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+   <title>新冠疫情舆情时空分析</title> 
+  
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<style>
+#migrateMap{
+    height: 450px;
+    width: 1000px;
+}
+</style>
+
+<body>
+
+    <!-- Top Bar  -->
+    <header class="top-bar">
+
+        <!-- Menu Toggler -->
+        <button type="button" class="menu-toggler la la-bars" data-toggle="menu"></button>
+
+        <!-- Brand -->
+        <span class="brand">新冠疫情舆情时空分析</span>
+
+        <!-- Search -->
+        <form class="hidden md:block ml-10" action="#">
+            <label class="form-control-addon-within rounded-full">
+                <input type="text" id="mytext" class="form-control border-none" placeholder="Search" value="">
+                <span class="flex items-center pr-4">
+                    <button type="button" id="mybtn"
+                        class="dark:text-gray-700 dark:hover:text-primary btn btn-link text-gray-300 hover:text-primary text-xl leading-none la la-search"></button>
+                </span>
+            </label>
+        </form>
+
+        <!-- Right -->
+        <div class="flex items-center ml-auto">
+
+            <!-- Dark Mode -->
+            <label class="switch switch_outlined" data-toggle="tooltip" data-tippy-content="Toggle Dark Mode">
+                <input id="darkModeToggler" type="checkbox">
+                <span></span>
+            </label>
+
+            <!-- Fullscreen -->
+            <button type="button"
+                class="hidden lg:inline-block btn-link ml-3 px-2 text-2xl leading-none la la-expand-arrows-alt"
+                data-toggle="tooltip" data-tippy-content="Fullscreen" id="fullScreenToggler"></button>
+
+        </div>
+    </header>
+
+    <!-- Menu Bar -->
+    <aside class="menu-bar">
+        <div class="menu menu-sticky">
+            <div class="menu-items">
+                <a href="#no-link" data-target="dataoverview" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-laptop"></span><span class="title">数据总览</span></a>
+                <a href="#no-link" data-target="datasearch" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-layer-group"></span><span class="title">信息查询</span></a>
+                <a href="#no-link" data-target="dataanalyst" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-sitemap"></span><span class="title">数据分析</span></a>
+                <a href="#no-link" data-target="message" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-comment"></span><span class="title">舆情挖掘</span></a>
+            </div>
+
+            <!-- DataOverview -->
+            <div class="menu-detail" data-menu="dataoverview">
+                <a href="index.html"><span class="la la-chart-area"></span>Dashboard</a>
+                <a href="mainmap.html"><span class="la la-map"></span>Map 2D/3D</a>
+            </div>
+
+            <!-- DataSearch -->
+            <div class="menu-detail" data-menu="datasearch">
+                <a href="query-map.html"><span class="la la-map"></span>Map Polygon/Attribute Query</a>
+                <a href="detail-query.html"><span class="la la-thumbtack"></span>Information Query</a>
+            </div>
+
+            <!-- DataAnalyst -->
+            <div class="menu-detail" data-menu="dataanalyst">
+                <a href="heat-map.html"><span class="la la-table"></span>Heat Density Map</a>
+                <a href="migrate-map.html"><span class="la la-map"></span>Migration Map</a>
+            </div>
+
+            <!-- Message -->
+            <div class="menu-detail" data-menu="message">
+                <a href="blog-list-card-columns.html"><span class="la la-list"></span>Up-to-date Messages</a>
+                <a href="blog-list.html"><span class="la la-hand-pointer"></span>Sentiment Analyst</a>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- Workspace  -->
+    <main class="workspace overflow-hidden">
+
+        <div class="lg:flex lg:-mx-4">
+            <div class="lg:w-1/1 lg:px-4 pt-5 lg:pt-0">
+
+                <!-- Map -->
+                <div class="card mt-5 p-5">
+                    <h3>Migrate Map</h3>
+                    <div class="w-1/1 lg:w-1/1 px-4">
+                        <div id="migrateMap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer  -->
+        <footer class="flex mt-auto">
+            <div class="footer">
+                <span class='uppercase'></span>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
+    <script src="assets/js/script.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://js.arcgis.com/4.11/esri/themes/light/main.css">
+    <script src="src/echarts.min.js"></script>
+	<script src="src/echarts-gl.js"></script>
+	<script>
+	var dojoConfig = {
+        parseOnLoad: true,
+        packages: [{
+            name: "src",
+            location: location.pathname.replace(/\/[^/]+$/, "")+"/src"
+        }]
+    };
+	</script>
+	<script src="https://js.arcgis.com/4.11/"></script>
+    <script src="assets/js/page-link.js"></script>
+    <script src = "assets/js/migrate-map.js"></script>
+</body>
+
+</html>

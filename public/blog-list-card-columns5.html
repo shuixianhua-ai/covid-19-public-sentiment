@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+   <title>List - Card Columns - Blog - Pages - Yeti Admin </title> 
+  
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+    <!-- Top Bar  -->
+    <header class="top-bar">
+
+        <!-- Menu Toggler -->
+        <button type="button" class="menu-toggler la la-bars" data-toggle="menu"></button>
+
+        <!-- Brand -->
+        <span class="brand">新冠疫情舆情时空分析</span>
+
+        <!-- Search -->
+        <form class="hidden md:block ml-10" action="#">
+            <label class="form-control-addon-within rounded-full">
+                <input type="text" id="mytext" class="form-control border-none" placeholder="Search" value="">
+                <span class="flex items-center pr-4">
+                    <button type="button" id="mybtn"
+                        class="dark:text-gray-700 dark:hover:text-primary btn btn-link text-gray-300 hover:text-primary text-xl leading-none la la-search"></button>
+                </span>
+            </label>
+        </form>
+
+        <!-- Right -->
+        <div class="flex items-center ml-auto">
+
+            <!-- Dark Mode -->
+            <label class="switch switch_outlined" data-toggle="tooltip" data-tippy-content="Toggle Dark Mode">
+                <input id="darkModeToggler" type="checkbox">
+                <span></span>
+            </label>
+
+            <!-- Fullscreen -->
+            <button type="button"
+                class="hidden lg:inline-block btn-link ml-3 px-2 text-2xl leading-none la la-expand-arrows-alt"
+                data-toggle="tooltip" data-tippy-content="Fullscreen" id="fullScreenToggler"></button>
+
+        </div>
+    </header>
+    
+    <!-- Menu Bar -->
+    <aside class="menu-bar">
+        <div class="menu menu-sticky">
+            <div class="menu-items">
+                <a href="#no-link" data-target="dataoverview" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-laptop"></span><span class="title">数据总览</span></a>
+                <a href="#no-link" data-target="datasearch" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-layer-group"></span><span class="title">信息查询</span></a>
+                <a href="#no-link" data-target="dataanalyst" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-sitemap"></span><span class="title">数据分析</span></a>
+                <a href="#no-link" data-target="message" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-comment"></span><span class="title">舆情挖掘</span></a>
+            </div>
+
+            <!-- DataOverview -->
+            <div class="menu-detail" data-menu="dataoverview">
+                <a href="index.html"><span class="la la-chart-area"></span>Dashboard</a>
+                <a href="mainmap.html"><span class="la la-map"></span>Map 2D/3D</a>
+            </div>
+
+            <!-- DataSearch -->
+            <div class="menu-detail" data-menu="datasearch">
+                <a href="query-map.html"><span class="la la-map"></span>Map Polygon/Attribute Query</a>
+                <a href="detail-query.html"><span class="la la-thumbtack"></span>Information Query</a>
+            </div>
+
+            <!-- DataAnalyst -->
+            <div class="menu-detail" data-menu="dataanalyst">
+                <a href="heat-map.html"><span class="la la-table"></span>Heat Density Map</a>
+                <a href="migrate-map.html"><span class="la la-map"></span>Migration Map</a>
+            </div>
+
+            <!-- Message -->
+            <div class="menu-detail" data-menu="message">
+                <a href="blog-list-card-columns.html"><span class="la la-list"></span>Up-to-date Messages</a>
+                <a href="blog-list.html"><span class="la la-hand-pointer"></span>Sentiment Analyst</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Workspace  -->
+    <main class="workspace overflow-hidden">
+
+        <!-- Breadcrumb -->
+        <section class="breadcrumb lg:flex items-start">
+            <div>
+                <h1>最新舆情显示</h1>
+            </div>
+            <div class="lg:flex items-center ml-auto mt-5 lg:mt-0">
+                <div class="mt-5 lg:mt-0">
+                    <a href="blog-list.html" class="btn btn-icon btn-icon_large btn_outlined btn_secondary"><span
+                            class="la la-bars"></span></a>
+                    <a href="#" class="btn btn-icon btn-icon_large btn_outlined btn_primary ml-2"><span
+                            class="la la-th-large"></span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- List -->
+        <div class="sm:flex sm:flex-wrap sm:-mx-4">
+            <div class="sm:flex sm:w-1/2 xl:w-1/4 mb-5 sm:px-4">
+                <div class="card card_column card_hoverable">
+                    <div class="image">
+                        <img src="assets/images/data.jpg">
+                        <label class="custom-checkbox absolute top-0 left-0 mt-2 ml-2">
+                            <span></span>
+                        </label>
+                        
+                    </div>
+                    <div class="header">
+                        <h5 id="cnews1">------</h5>
+                    </div>
+                    <div class="body">
+                        <h6 class="uppercase mt-4">Time</h6>
+                        <p id="ctime1">------</p>
+                    </div>
+                    <div class="body">
+                        <h6 class="uppercase mt-4">Emotion</h6>
+                        <p id="cemotion1">NULL</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sm:flex sm:w-1/2 xl:w-1/4 mb-5 sm:px-4">
+                <div class="card card_column card_hoverable">
+                    <div class="image">
+                        <img src="assets/images/medical.jpg">
+                        <label class="custom-checkbox absolute top-0 left-0 mt-2 ml-2">
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="header">
+                        <h5 id="cnews2">------</h5>
+                    </div>
+                    <div class="body">
+                        <h6 class="uppercase mt-4">Time</h6>
+                        <p id="ctime2">------</p>
+                    </div>
+                    <div class="body">
+                        <h6 class="uppercase mt-4">Emotion</h6>
+                        <p id="cemotion2">NULL</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sm:flex sm:w-1/2 xl:w-1/4 mb-5 sm:px-4">
+                <div class="card card_column card_hoverable">
+                    <div class="image">
+                        <img src="assets/images/news.jpg">
+                        <label class="custom-checkbox absolute top-0 left-0 mt-2 ml-2">
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="header">
+                        <h5 id="cnews3">------</h5>
+                    </div>
+                    <div class="body">
+                        <h6 class="uppercase mt-4">Time</h6>
+                        <p id="ctime3">------</p>
+                    </div>
+                    <div class="body">
+                        <h6 class="uppercase mt-4">Emotion</h6>
+                        <p id="cemotion3">NULL</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sm:flex sm:w-1/2 xl:w-1/4 mb-5 sm:px-4">
+                <div class="card card_column card_hoverable">
+                    <div class="image">
+                        <img src="assets/images/protect.jpg">
+                        <label class="custom-checkbox absolute top-0 left-0 mt-2 ml-2">
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="header">
+                        <h5 id="cnews4">------</h5>
+                    </div>
+                    <div class="body">
+                        <h6 class="uppercase mt-4">Time</h6>
+                        <p id="ctime4">------</p>
+                    </div>
+                    <div class="body">
+                        <h6 class="uppercase mt-4">Emotion</h6>
+                        <p id="cemotion4">NULL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="card lg:flex">
+            <nav class="flex flex-wrap p-5">
+                <a href="blog-list-card-columns.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">First</a>
+                <a href="blog-list-card-columns.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">1</a>
+                <a href="blog-list-card-columns2.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">2</a>
+                <a href="blog-list-card-columns3.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">3</a>
+                <a href="blog-list-card-columns4.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">4</a>
+                <a href="blog-list-card-columns5.html" class="btn mr-2 mb-2 lg:mb-0 btn_primary">5</a>
+                <a href="blog-list-card-columns6.html" class="btn mr-2 mb-2 lg:mb-0 btn_outlined btn_secondary">6</a>
+                <a href="blog-list-card-columns6.html" class="btn mr-2 mb-2 lg:mb-0 btn_secondary">Last</a>
+            </nav>
+            <div class="flex items-center ml-auto p-5 border-t lg:border-t-0 border-gray-200 dark:border-gray-900">
+                Displaying 1-4 of 24 items
+            </div>
+        </div>
+
+        <!-- Footer  -->
+        <footer class="flex mt-auto">
+            <div class="footer">
+                <span class='uppercase'>&copy; 2021</span>
+                <nav class="ml-auto">
+                    <h>WebGIS大作业</h>
+                    <span class="divider mx-2">|</span>
+                    
+                </nav>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script> 
+<script>    
+    $(function(){    
+        $.ajax({    
+            //请求方式    
+            type:"GET",    
+            //文件位置    
+            url:"json/news_25.json",  
+            //返回数据格式为json,也可以是其他格式如    
+            dataType: "json",    
+            //请求成功后要执行的函数，拼接html    
+            success: function(data){    
+                var title;
+                var time; 
+                var emotion;
+                var i;
+                var a;
+                var p = 4;
+                for(i=0; i<4; i++){
+                    title = data[p*4 + i].message; 
+                    a = i + 1;
+                    str = "cnews" + a;
+                    document.getElementById(str).innerText = title;
+                    time = data[p*4 + i].time_t;  
+                    str = "ctime"+a;
+                    document.getElementById(str).innerText = time;
+                    emotion = data[p*4 + i].emotion; 
+                    str = "cemotion" + a;
+                    document.getElementById(str).innerText = emotion;
+                } 
+            }    
+        });    
+    });    
+</script>  
+<script src="assets/js/page-link.js"></script>
+</body>
+
+</html>

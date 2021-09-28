@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+   <title>新冠疫情舆情时空分析</title> 
+  
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<style>
+#queryMap{
+    height: 450px;
+    width: 1000px;
+}
+
+#attDiv{
+    background-color: white;
+    padding: 10px;
+    width: 160px;
+    margin: 5px;
+    position:  absolute;
+    bottom: 320px;
+    left: 80px;
+    font-size: 14px;
+    display: none;
+}
+
+#resultDiv{
+    min-width: 250px;
+    font-size: 14px;
+    padding: 10px;
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#infoDiv {
+    background-color: white;
+    padding: 10px;
+    width: 160px;
+    margin: 5px;
+    position:  absolute;
+    bottom: 120px;
+    left: 80px;
+    font-size: 14px;
+    display: none;
+}
+.geometry-options {
+    display: flex;
+    flex-direction: row;
+}
+
+.geometry-button {
+    flex: 1;
+    border-style: solid;
+    border-width: 1px;
+    border-image: none;
+}
+
+.geometry-button-selected {
+    background: #4c4c4c;
+    color: #fff;
+}
+.count {
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+}
+</style>
+
+<body>
+
+    <!-- Top Bar  -->
+    <header class="top-bar">
+
+        <!-- Menu Toggler -->
+        <button type="button" class="menu-toggler la la-bars" data-toggle="menu"></button>
+
+        <!-- Brand -->
+        <span class="brand">新冠疫情舆情时空分析</span>
+
+        <!-- Search -->
+        <form class="hidden md:block ml-10" action="#">
+            <label class="form-control-addon-within rounded-full">
+                <input type="text" id="mytext" class="form-control border-none" placeholder="Search" value="">
+                <span class="flex items-center pr-4">
+                    <button type="button" id="mybtn"
+                        class="dark:text-gray-700 dark:hover:text-primary btn btn-link text-gray-300 hover:text-primary text-xl leading-none la la-search"></button>
+                </span>
+            </label>
+        </form>
+
+        <!-- Right -->
+        <div class="flex items-center ml-auto">
+
+            <!-- Dark Mode -->
+            <label class="switch switch_outlined" data-toggle="tooltip" data-tippy-content="Toggle Dark Mode">
+                <input id="darkModeToggler" type="checkbox">
+                <span></span>
+            </label>
+
+            <!-- Fullscreen -->
+            <button type="button"
+                class="hidden lg:inline-block btn-link ml-3 px-2 text-2xl leading-none la la-expand-arrows-alt"
+                data-toggle="tooltip" data-tippy-content="Fullscreen" id="fullScreenToggler"></button>
+
+        </div>
+    </header>
+
+    <!-- Menu Bar -->
+    <aside class="menu-bar">
+        <div class="menu menu-sticky">
+            <div class="menu-items">
+                <a href="#no-link" data-target="dataoverview" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-laptop"></span><span class="title">数据总览</span></a>
+                <a href="#no-link" data-target="datasearch" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-layer-group"></span><span class="title">信息查询</span></a>
+                <a href="#no-link" data-target="dataanalyst" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-sitemap"></span><span class="title">数据分析</span></a>
+                <a href="#no-link" data-target="message" data-toggle="tooltip-menu" data-tippy-content="Dashboard"><span
+                        class="icon la la-comment"></span><span class="title">舆情挖掘</span></a>
+            </div>
+
+            <!-- DataOverview -->
+            <div class="menu-detail" data-menu="dataoverview">
+                <a href="index.html"><span class="la la-chart-area"></span>Dashboard</a>
+                <a href="mainmap.html"><span class="la la-map"></span>Map 2D/3D</a>
+            </div>
+
+            <!-- DataSearch -->
+            <div class="menu-detail" data-menu="datasearch">
+                <a href="query-map.html"><span class="la la-map"></span>Map Polygon/Attribute Query</a>
+                <a href="detail-query.html"><span class="la la-thumbtack"></span>Information Query</a>
+            </div>
+
+            <!-- DataAnalyst -->
+            <div class="menu-detail" data-menu="dataanalyst">
+                <a href="heat-map.html"><span class="la la-table"></span>Heat Density Map</a>
+                <a href="migrate-map.html"><span class="la la-map"></span>Migration Map</a>
+            </div>
+
+            <!-- Message -->
+            <div class="menu-detail" data-menu="message">
+                <a href="blog-list-card-columns.html"><span class="la la-list"></span>Up-to-date Messages</a>
+                <a href="blog-list.html"><span class="la la-hand-pointer"></span>Sentiment Analyst</a>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- Workspace  -->
+    <main class="workspace overflow-hidden">
+
+        <div class="lg:flex lg:-mx-4">
+            <div class="lg:w-1/1 lg:px-4 pt-5 lg:pt-0">
+
+                <!-- Map -->
+                <div class="card mt-5 p-5">
+                    <h3>Map</h3>
+                    <div class="w-1/1 lg:w-1/1 px-4">
+                        <div id="queryMap"></div>
+                        <div id="infoDiv" class="esri-widget">
+                            <b>Filter by Polygon</b><br /><br />
+                            Draw a geometry to filter by:<br/>
+                            <div class="geometry-options">
+                              <button
+                                class="esri-widget--button esri-icon-polygon geometry-button"
+                                id="polygon-geometry-button"
+                                value="polygon"
+                                title="Filter by polygon"
+                              ></button>
+                            </div>
+                              <br /><br />
+                              <button class="esri-button" id="clearFilter" type="button">
+                                Clear filter
+                              </button>
+                        </div>
+                        <div id="resultDiv" class="esri-widget">
+                            <div class="count">
+                                Selected Cities:
+                                <div class="count" id="count">0</div>
+                            </div>
+                            <div class="charts">
+                                <div>
+                                  <canvas id="heat-chart" height="250" width="260"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="attDiv" class="esri-widget">
+                            <b>Filter by Attribute</b><br /><br />
+                            Find by City Name:<br/>
+                            <input type="text" id="inputTxt" style="width:80%" value="(待输入)" />
+                            <br />
+                            <br />
+                            <input type="button" class="esri-button" value="Find" id="findBtn" />
+                            <br />
+                            <input type="button" class="esri-button" value="Clear" id="clearBtn" />
+                            <br />
+                            <table id="tbl"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer  -->
+        <footer class="flex mt-auto">
+            <div class="footer">
+                <span class='uppercase'></span>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/page-link.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.17/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.17/"></script>
+    <script src = "assets/js/query.js"></script>
+
+</body>
+
+</html>
